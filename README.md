@@ -24,7 +24,8 @@ has a positive limit when N and F are at distance at least 2.
   two parts of the conjecture cannot both hold on that graph. The complete bipartite graph K_{3,3} with N and F on
   the same side, plus one edge from F to the third vertex of that side, is a 3-connected example.
 * A corrected form of the second part (Conjecture 9): an explicit set D(G, N, F) of edges that should be exactly the
-  edges with limit 0. In the mean-field flow this holds on all 1,738 cases with 3 to 6 vertices.
+  edges with limit 0. In the mean-field flow this holds on the 22,828 cases with 3 to 7 vertices (in one of them
+  after a longer integration, see `code/rerun_3769.py`).
 * Theta graphs (Proposition 10). For k internally disjoint paths of lengths L_1, ..., L_k between N and F, the
   weights alpha_i^j on the j-th edge of path i form an equilibrium, where the alpha_i solve
   sum_i alpha_i^{L_i} = 1 with (1 - alpha_i) / (1 - alpha_i^{L_i}) the same for all i. Equal lengths give
@@ -39,9 +40,12 @@ them.
   support, and the stability data of an equilibrium.
 * `ants_fast.py`: the same probabilities from a single Green's matrix; `python3 ants_fast.py test` compares the two.
 * `ants_exact.py`: the census. `python3 ants_exact.py 3 6 6 4 out.jsonl` solves every connected graph with 3 to 6
-  vertices and every pair (N, F) up to automorphism, from six initial conditions each.
+  vertices and every pair (N, F) up to automorphism, from six initial conditions each; `7 7` in place of `3 6` gives
+  the 21,090 cases with 7 vertices.
 * `dead_set.py`: the edge set of Theorem 2 and the set D(G, N, F) of Conjecture 9.
 * `table.py` (output `table_out.txt`): the table of Section 4 from the census files.
+* `rerun_3769.py` (output `rerun_3769_out.txt`): the one case of the census in which the six runs were not
+  classified alike, with ten and a hundred times the integration time.
 * `ex_named.py` (output `ex_named_out.txt`): the examples named in the paper.
 * `families.py`: theta graphs, complete and complete bipartite graphs, cycles, grids, hypercubes, the Petersen
   graph, wheels and ladders, thirty initial conditions each; writes `data/fam.jsonl`.
@@ -51,6 +55,7 @@ them.
 
 ## Data
 
-* `data/ex5.jsonl`, `data/ex6.jsonl`: the census for 3 to 5 and for 6 vertices, one case per line (edge list, N, F,
+* `data/ex5.jsonl`, `data/ex6.jsonl`, `data/ex7.jsonl`: the census for 3 to 5, for 6 and for 7 vertices, one case
+  per line (edge list, N, F,
   the limit, its zero set, the largest real part of an eigenvalue on its support).
 * `data/fam.jsonl`: the output of `families.py`.

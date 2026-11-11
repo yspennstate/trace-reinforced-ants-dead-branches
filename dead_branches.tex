@@ -30,7 +30,7 @@ zero almost surely; this happens in $2$-connected graphs with $N$ and $F$ at dis
 mean-field vector field has no equilibrium with all coordinates positive when some neighbour of $F$ is hidden from $N$
 by the other neighbours of $F$, so that on such graphs, some of which are $3$-connected, the normalised weights cannot
 converge to a positive limit. The equilibria are described through the voltage of the unit current from $N$ to $F$.
-A census of the $1{,}738$ cases on connected graphs with at most six vertices supports a corrected form of the
+A census of the $22{,}828$ cases on connected graphs with at most seven vertices supports a corrected form of the
 conjecture, in which the set of edges with limit zero is given by an explicit combinatorial rule. We also give the
 equilibrium on a graph made of any number of parallel paths.
 \end{abstract}
@@ -49,7 +49,8 @@ W_e(n+1)=W_e(n)+\one\{\text{the $(n+1)$-st ant crossed $e$}\}.
 The process was introduced by Kious, Mailler and Schapira \cite{KMS}, as a variant of the models of \cite{KMS0}, in
 which an ant reinforces only a part of its trace (its loop-erasure, or a shortest path inside it). These models
 are motivated by the trails with which ants mark the way to a food source \cite{Den,DS}, and belong to the family of
-reinforced random processes surveyed in \cite{Pem07}, which goes back to the edge-reinforced walk \cite{Dav}. They proved that $W(n)/n$ converges almost surely to an explicit
+reinforced random processes surveyed in \cite{Pem07}, which goes back to the edge-reinforced walk \cite{Dav}; a model with two nests is treated in \cite{MV}. Kious, Mailler
+and Schapira proved that $W(n)/n$ converges almost surely to an explicit
 deterministic limit on several families of graphs (tree-like graphs in which $N$ and $F$ are adjacent, the cone, two
 parallel paths, the lozenge), and stated the following.
 
@@ -277,8 +278,8 @@ the edges of kind (D1) are covered by \cite[Proposition 2.8]{KMS}, and Propositi
 corresponding statement for equilibria. When $N$ is not adjacent to $F$, Theorem~\ref{thm:shadow} shows that
 $\mathcal D\neq\emptyset$ is forced as soon as (D1) is non-empty.
 
-We tested the mean-field form of Conjecture~\ref{conj:new} on every connected graph with $3$ to $6$ vertices and
-every ordered pair $(N,F)$ up to automorphism, $1{,}738$ cases in all, of which $1{,}427$ are reduced; in the others the
+We tested the mean-field form of Conjecture~\ref{conj:new} on every connected graph with $3$ to $7$ vertices and
+every ordered pair $(N,F)$ up to automorphism, $22{,}828$ cases in all, of which $20{,}092$ are reduced; in the others the
 never-crossed edges were removed first. For each case the flow $\dot w=p(w)-w$ was integrated from six initial
 conditions (uniform, log-uniform over six $e$-folds, and concentrated on a random path from $N$ to $F$); coordinates
 that decay were set to zero and the remaining ones were refined by Newton's method, with $p$ evaluated by one linear
@@ -288,15 +289,18 @@ solve per edge.
 \toprule
  & cases & one limit & zero set $=\mathcal D$ & reduced & reduced, $\mathcal D\neq\emptyset$\\
 \midrule
-$N$ adjacent to $F$ & 961 & 961 & 961 & 750 & 721\\
-distance at least $2$ & 777 & 777 & 777 & 677 & 276\\
+$N$ adjacent to $F$ & 12{,}004 & 12{,}003 & 12{,}003 & 10{,}286 & 10{,}064\\
+distance at least $2$ & 10{,}824 & 10{,}824 & 10{,}824 & 9{,}806 & 4{,}118\\
 \bottomrule
 \end{tabular}
 \end{center}
-In every case the six runs reached the same point. At these limits the largest real part of an eigenvalue of
-$Dp-I$ restricted to the support is $-0.054$, and the smallest positive coordinate is $0.014$. Among the $677$
-reduced cases at distance at least $2$, Theorem~\ref{thm:dead} applies to $196$ and Theorem~\ref{thm:shadow} to $204$;
-$80$ of the $276$ cases with a dead edge are $2$-connected graphs, and $8$ are $3$-connected.
+The six runs reached the same point in every case but one. In the remaining case, a graph with seven vertices in which
+$N$ is adjacent to $F$, an edge of $\mathcal D$ has a weight that decays like $1/t$ along the flow, and in one run it had
+not been set to zero by the end of the integration; with ten times the integration time the six runs agree and the
+zero set is $\mathcal D$. At the limits the largest real part of an eigenvalue of
+$Dp-I$ restricted to the support is $-0.015$, and the smallest positive coordinate is $0.0019$. Among the $9{,}806$
+reduced cases at distance at least $2$, Theorem~\ref{thm:dead} applies to $2{,}504$ and Theorem~\ref{thm:shadow} to
+$3{,}294$; $1{,}643$ of the $4{,}118$ cases with a dead edge are $2$-connected graphs, and $247$ are $3$-connected.
 
 The process itself was simulated with $10^7$ ants on four graphs. On the graph of Example~\ref{ex:c4} the values of
 $W_{ay}(n)/n$ at $n=10^3,10^4,\dots,10^7$ were $0.060$, $0.059$, $0.049$, $0.044$, $0.040$, and those of
@@ -402,6 +406,8 @@ Argentine ant, \emph{J. Insect Behav.} \textbf{3} (1990), 159--168.
 arXiv:2010.04820.
 \bibitem{KMS} D.~Kious, C.~Mailler and B.~Schapira, The trace-reinforced ants process does not find shortest paths,
 \emph{J. \'Ec. polytech. Math.} \textbf{9} (2022), 505--536.
+\bibitem{MV} C.~Mailler and Z.~Varin, The two-nest ants process on triangle-series-parallel graphs,
+arXiv:2601.22855.
 \bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026,
 \url{https://github.com/yspennstate/math-brain-public}.
 \bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research},

@@ -1,24 +1,25 @@
-('all', 'N~F', 'cases') 961
-('all', 'N~F', 'one limit') 961
-('all', 'N~F', 'reduced') 750
-('all', 'N~F', 'reduced, Theorem 2 applies') 408
-('all', 'N~F', 'reduced, Theorem 2 applies, 2-connected') 173
-('all', 'N~F', 'reduced, a zero edge') 721
-('all', 'N~F', 'reduced, a zero edge, 2-connected') 447
-('all', 'N~F', 'reduced, a zero edge, 3-connected') 96
-('all', 'N~F', 'zero set = D') 961
-('all', 'd>=2', 'cases') 777
-('all', 'd>=2', 'one limit') 777
-('all', 'd>=2', 'reduced') 677
-('all', 'd>=2', 'reduced, Theorem 2 applies') 196
-('all', 'd>=2', 'reduced, Theorem 2 applies, 2-connected') 36
-('all', 'd>=2', 'reduced, Theorem 5 applies') 204
-('all', 'd>=2', 'reduced, Theorem 5 applies, 2-connected') 80
-('all', 'd>=2', 'reduced, Theorem 5 applies, 3-connected') 8
-('all', 'd>=2', 'reduced, a zero edge') 276
-('all', 'd>=2', 'reduced, a zero edge, 2-connected') 80
-('all', 'd>=2', 'reduced, a zero edge, 3-connected') 8
-('all', 'd>=2', 'zero set = D') 777
+('all', 'N~F', 'NOT ONE LIMIT') 1
+('all', 'N~F', 'cases') 12004
+('all', 'N~F', 'one limit') 12003
+('all', 'N~F', 'reduced') 10286
+('all', 'N~F', 'reduced, Theorem 2 applies') 4564
+('all', 'N~F', 'reduced, Theorem 2 applies, 2-connected') 2041
+('all', 'N~F', 'reduced, a zero edge') 10064
+('all', 'N~F', 'reduced, a zero edge, 2-connected') 6879
+('all', 'N~F', 'reduced, a zero edge, 3-connected') 1827
+('all', 'N~F', 'zero set = D') 12003
+('all', 'd>=2', 'cases') 10824
+('all', 'd>=2', 'one limit') 10824
+('all', 'd>=2', 'reduced') 9806
+('all', 'd>=2', 'reduced, Theorem 2 applies') 2504
+('all', 'd>=2', 'reduced, Theorem 2 applies, 2-connected') 616
+('all', 'd>=2', 'reduced, Theorem 5 applies') 3294
+('all', 'd>=2', 'reduced, Theorem 5 applies, 2-connected') 1643
+('all', 'd>=2', 'reduced, Theorem 5 applies, 3-connected') 247
+('all', 'd>=2', 'reduced, a zero edge') 4118
+('all', 'd>=2', 'reduced, a zero edge, 2-connected') 1643
+('all', 'd>=2', 'reduced, a zero edge, 3-connected') 247
+('all', 'd>=2', 'zero set = D') 10824
 (3, 'N~F', 'cases') 3
 (3, 'N~F', 'one limit') 3
 (3, 'N~F', 'reduced') 2
@@ -87,5 +88,26 @@
 (6, 'd>=2', 'reduced, a zero edge, 2-connected') 76
 (6, 'd>=2', 'reduced, a zero edge, 3-connected') 8
 (6, 'd>=2', 'zero set = D') 701
-largest real part of an eigenvalue of Dp - I on the support: {'d>=2': -0.05390431954273156, 'N~F': -0.05937369472249898}
-smallest positive limit weight: {'d>=2': 0.01436852001960425, 'N~F': 0.017700539179587752}
+(7, 'N~F', 'cases') 11043
+(7, 'N~F', 'one limit') 11042
+(7, 'N~F', 'reduced') 9536
+(7, 'N~F', 'reduced, Theorem 2 applies') 4156
+(7, 'N~F', 'reduced, Theorem 2 applies, 2-connected') 1868
+(7, 'N~F', 'reduced, a zero edge') 9343
+(7, 'N~F', 'reduced, a zero edge, 2-connected') 6432
+(7, 'N~F', 'reduced, a zero edge, 3-connected') 1731
+(7, 'N~F', 'zero set = D') 11042
+(7, 'd>=2', 'cases') 10047
+(7, 'd>=2', 'one limit') 10047
+(7, 'd>=2', 'reduced') 9129
+(7, 'd>=2', 'reduced, Theorem 2 applies') 2308
+(7, 'd>=2', 'reduced, Theorem 2 applies, 2-connected') 580
+(7, 'd>=2', 'reduced, Theorem 5 applies') 3090
+(7, 'd>=2', 'reduced, Theorem 5 applies, 2-connected') 1563
+(7, 'd>=2', 'reduced, Theorem 5 applies, 3-connected') 239
+(7, 'd>=2', 'reduced, a zero edge') 3842
+(7, 'd>=2', 'reduced, a zero edge, 2-connected') 1563
+(7, 'd>=2', 'reduced, a zero edge, 3-connected') 239
+(7, 'd>=2', 'zero set = D') 10047
+largest real part of an eigenvalue of Dp - I on the support: {'d>=2': -0.015257982953657212, 'N~F': -0.02337448798438896}
+smallest positive limit weight: {'d>=2': 0.0019026284894185482, 'N~F': 0.0028596907634054103}

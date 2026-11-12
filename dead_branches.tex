@@ -1,6 +1,7 @@
 \documentclass[11pt]{amsart}
 \usepackage{amsmath,amssymb,amsthm,booktabs}
 \usepackage[margin=1.15in]{geometry}
+\usepackage{array,longtable,booktabs}
 \usepackage{hyperref}
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -35,7 +36,7 @@ which an explicit combinatorial rule gives the edges with limit zero.
 \end{abstract}
 \maketitle
 
-\section{Introduction}
+\section{Introduction}\label{sec:intro}
 
 Let $G=(V,E)$ be a finite connected simple graph with two distinct marked vertices, the nest $N$ and the food $F$.
 The \emph{trace-reinforced ant process} on $(G,N,F)$ is the sequence of weight vectors $W(n)=(W_e(n))_{e\in E}$
@@ -106,8 +107,8 @@ hitting $F$. Then $\EE[W_e(n+1)-W_e(n)\mid\cF_n]=p_e(W(n))$, the map $p$ is homo
 is a stochastic approximation of the flow $\dot w=p(w)-w$ in the sense of \cite{Ben,Pem90}. An \emph{equilibrium} is a solution of $p(w)=w$.
 
 \begin{theorem}[Shadowed neighbours of $F$]\label{thm:shadow}
-Let $(G,N,F)$ be reduced with $N$ not adjacent to $F$, let $N(F)$ be the set of neighbours of $F$, and let $I_0$ be
-the connected component of $N$ in $G-F-N(F)$. If some $x\in N(F)$ has no neighbour in $I_0$, then $p$ has no
+Let $(G,N,F)$ be reduced with $N$ not adjacent to $F$, let $\Gamma(F)$ be the set of neighbours of $F$, and let $I_0$ be
+the connected component of $N$ in $G-F-\Gamma(F)$. If some $x\in \Gamma(F)$ has no neighbour in $I_0$, then $p$ has no
 equilibrium with all coordinates positive. Consequently, on such a graph the event that $W(n)/n$ converges to a limit
 with all coordinates positive has probability zero.
 \end{theorem}
@@ -164,23 +165,23 @@ having an endpoint in $H$. With $c=1/(\deg(u)\deg(y))$ we obtain
 \frac{p_a(W(n))}{A_n}-\frac{p_e(W(n))}{X_n}\ \ge\ \frac{c\,p_e(W(n))}{n+1}.
 \end{equation}
 
-\medskip\noindent\textbf{Step 2.} \emph{The logarithm of the ratio.} Let $L_n=\log(X_n/A_n)$, and let $D_n$ and
+\medskip\noindent\textbf{Step 2.} \emph{The logarithm of the ratio.} Let $\Lambda_n=\log(X_n/A_n)$, and let $D_n$ and
 $D'_n$ be the indicators that the $(n+1)$-st ant crosses $e$ and $a$ respectively, so that
 \[
-L_{n+1}-L_n=D_n\log\Bigl(1+\frac1{X_n}\Bigr)-D'_n\log\Bigl(1+\frac1{A_n}\Bigr).
+\Lambda_{n+1}-\Lambda_n=D_n\log\Bigl(1+\frac1{X_n}\Bigr)-D'_n\log\Bigl(1+\frac1{A_n}\Bigr).
 \]
 Using $t-t^2/2\le\log(1+t)\le t$ and \eqref{eq:drift},
 \[
-\EE[L_{n+1}-L_n\mid\cF_n]\ \le\ \frac{p_e(W(n))}{X_n}-\frac{p_a(W(n))}{A_n}+\frac{p_a(W(n))}{2A_n^2}
+\EE[\Lambda_{n+1}-\Lambda_n\mid\cF_n]\ \le\ \frac{p_e(W(n))}{X_n}-\frac{p_a(W(n))}{A_n}+\frac{p_a(W(n))}{2A_n^2}
 \ \le\ -\frac{c\,p_e(W(n))}{n+1}+\frac{p_a(W(n))}{2A_n^2}.
 \]
 Since $X$ increases by one each time $D_n=1$, we have $\sum_nD_n/X_n^2\le\sum_{k\ge1}k^{-2}$, and likewise for $A$.
-Hence $\sum_n\EE[(L_{n+1}-L_n)^2]\le2\sum_kk^{-2}<\infty$, so the martingale
-$M_n=\sum_{j<n}\bigl(L_{j+1}-L_j-\EE[L_{j+1}-L_j\mid\cF_j]\bigr)$ is bounded in $L^2$ and converges almost surely.
+Hence $\sum_n\EE[(\Lambda_{n+1}-\Lambda_n)^2]\le2\sum_kk^{-2}<\infty$, so the martingale
+$M_n=\sum_{j<n}\bigl(\Lambda_{j+1}-\Lambda_j-\EE[\Lambda_{j+1}-\Lambda_j\mid\cF_j]\bigr)$ is bounded in $L^2$ and converges almost surely.
 Also $\EE\sum_np_a(W(n))/A_n^2=\EE\sum_nD'_n/A_n^2<\infty$, so $Q=\sum_np_a(W(n))/(2A_n^2)$ is almost surely finite.
 Altogether, for all $n$,
 \begin{equation}\label{eq:L}
-L_n\ \le\ M_n+Q-c\sum_{j<n}\frac{p_e(W(j))}{j+1}.
+\Lambda_n\ \le\ M_n+Q-c\sum_{j<n}\frac{p_e(W(j))}{j+1}.
 \end{equation}
 
 \medskip\noindent\textbf{Step 3.} \emph{Conclusion.} The martingale $\sum_{j<n}(D_j-p_e(W(j)))/(j+1)$ has
@@ -192,7 +193,7 @@ Summation by parts gives $\sum_{j<n}D_j/(j+1)=(X_n-1)/n+\sum_{j=1}^{n-1}(X_j-1)/
 $X_m\ge\delta m$ for infinitely many $m$, for some $\delta>0$. For such $m$ with $\delta m\ge2$, monotonicity gives
 $X_j-1\ge\delta m/2$ for $m\le j\le2m$, and $\sum_{j=m}^{2m}1/(j(j+1))\ge1/(2m)$, so the block $[m,2m]$ contributes at
 least $\delta/4$. Infinitely many disjoint blocks give $\sum_jD_j/(j+1)=\infty$. By \eqref{eq:equiv} and \eqref{eq:L},
-on the event $\{\limsup X_n/n>0\}$ we have $L_n\to-\infty$ almost surely, that is $X_n/A_n\to0$. But $A_n\le n+1$, so
+on the event $\{\limsup X_n/n>0\}$ we have $\Lambda_n\to-\infty$ almost surely, that is $X_n/A_n\to0$. But $A_n\le n+1$, so
 $X_n/n\to0$ on that event, which is a contradiction unless the event is null. Thus $X_n/n\to0$ almost surely, and
 Step~0 extends this to every edge with an endpoint in $H$. \qed
 
@@ -248,9 +249,9 @@ Then \eqref{eq:kirchhoff} at $N$ reads $w_{NF}=1$, and at another $x\in V_1$ it 
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:shadow}]
-Let $w$ be an equilibrium with all coordinates positive. Then $V_1=N(F)$, the support is $E$, and by
-Proposition~\ref{prop:volt}(a) the set $\{v>1\}$ does not meet $N(F)$. By (c), each $x\in N(F)$ has a neighbour $z$
-with $v(z)>1$, and $z$ is joined to $N$ by a path inside $\{v>1\}\subset V\setminus(N(F)\cup\{F\})$; thus $z\in I_0$.
+Let $w$ be an equilibrium with all coordinates positive. Then $V_1=\Gamma(F)$, the support is $E$, and by
+Proposition~\ref{prop:volt}(a) the set $\{v>1\}$ does not meet $\Gamma(F)$. By (c), each $x\in \Gamma(F)$ has a neighbour $z$
+with $v(z)>1$, and $z$ is joined to $N$ by a path inside $\{v>1\}\subset V\setminus(\Gamma(F)\cup\{F\})$; thus $z\in I_0$.
 
 For the second statement, $W_e(n)-\sum_{j<n}p_e(W(j))$ is a martingale with increments bounded by $1$, so
 $n^{-1}\bigl(W_e(n)-\sum_{j<n}p_e(W(j))\bigr)\to0$ almost surely. On the event that $W(n)/n\to\chi$ with all
@@ -268,11 +269,11 @@ Theorem~\ref{thm:dead}.
 
 \section{A corrected conjecture and a census of small graphs}\label{sec:census}
 
-Let $(G,N,F)$ be reduced. If $N$ is adjacent to $F$ put $I_0=\emptyset$ and $A=\{N\}$; otherwise let $I_0$ be the
-component of $N$ in $G-F-N(F)$ and let $A$ be the set of neighbours of $F$ that have a neighbour in $I_0$. Call
+Let $(G,N,F)$ be reduced. If $N$ is adjacent to $F$ put $I_0=\emptyset$ and $\mathcal A=\{N\}$; otherwise let $I_0$ be the
+component of $N$ in $G-F-\Gamma(F)$ and let $\mathcal A$ be the set of neighbours of $F$ that have a neighbour in $I_0$. Call
 $V\setminus(I_0\cup\{F\})$ the \emph{shadow}. Let $\mathcal D(G,N,F)$ be the set of edges of the following two kinds:
 \begin{itemize}
-\item[(D1)] $\{x,F\}$ with $x\in N(F)\setminus A$;
+\item[(D1)] $\{x,F\}$ with $x\in \Gamma(F)\setminus\mathcal A$;
 \item[(D2)] for every shadow vertex $u$ and every bridge $e=\{u,y\}$ of $G-F$ whose far side $H$ (the component of $y$
 in $G-F-e$) does not contain $N$: the edge $e$ and every edge with an endpoint in $H$.
 \end{itemize}
@@ -282,7 +283,7 @@ For every reduced $(G,N,F)$, $W(n)/n$ converges almost surely to a deterministic
 only if $e\in\mathcal D(G,N,F)$.
 \end{conjecture}
 
-Theorem~\ref{thm:dead} proves $\chi_e=0$ for the edges of kind (D2) with $u\in N(F)$. When $N$ is adjacent to $F$,
+Theorem~\ref{thm:dead} proves $\chi_e=0$ for the edges of kind (D2) with $u\in \Gamma(F)$. When $N$ is adjacent to $F$,
 the edges of kind (D1) are covered by \cite[Proposition 2.8]{KMS}, and Proposition~\ref{prop:volt}(d) is the
 corresponding statement for equilibria. When $N$ is not adjacent to $F$, Theorem~\ref{thm:shadow} shows that
 $\mathcal D\neq\emptyset$ is forced as soon as (D1) is non-empty.
@@ -401,6 +402,68 @@ Programs, census files and outputs:\\
 The paper is part of the Math Brain project, whose public repository is
 \url{https://github.com/yspennstate/math-brain-public}~\cite{MathBrainRepo}.
 
+\appendix
+\section{Notation}\label{app:notation}
+
+Symbols are listed roughly in the order in which they first appear, and the last column gives that place. The letters $a$, $c$, $C$, $t$ and $u$ are reused, and each meaning has its own row.
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.54\textwidth}>{\raggedright\arraybackslash}p{0.2\textwidth}@{}}
+\toprule
+Symbol & Meaning & First appears \\
+\midrule
+\endhead
+$G=(V,E)$ & a finite connected simple graph, its vertices and its edges & Section~\ref{sec:intro} \\
+$N$, $F$ & the nest and the food, two distinct marked vertices & Section~\ref{sec:intro} \\
+$n$ & the number of ants that have walked & Section~\ref{sec:intro} \\
+$W(n)$, $W_e(n)$ & the weight vector after $n$ ants, and its value at the edge $e$ & Section~\ref{sec:intro} \\
+$x$, $z$ & vertices; $W_{xz}$ is the weight of the edge $\{x,z\}$ & Section~\ref{sec:intro} \\
+$W_x(n)$ & the total weight of the edges at the vertex $x$ & Section~\ref{sec:intro} \\
+$\one\{\cdot\}$ & the indicator of an event & Section~\ref{sec:intro} \\
+$\chi$, $\chi_e$ & the deterministic limit of $W(n)/n$ in the conjectures, and its value at $e$ & Conjecture~\ref{conj:kms} \\
+reduced & said of $(G,N,F)$ when $G-F$ is connected & Section~\ref{sec:intro} \\
+$u$ & a neighbour of $F$ & Theorem~\ref{thm:dead} \\
+$u$ & a shadow vertex, in (D2) & Section~\ref{sec:census} \\
+$H$ & a set of vertices joined to the rest of $G-F$ by a single edge; in (D2), the far side of a bridge & Theorem~\ref{thm:dead} \\
+$e=\{u,y\}$ & the single edge joining $H$ to $V\setminus(H\cup\{F\})$; elsewhere $e$ is any edge & Theorem~\ref{thm:dead} \\
+$f$ & an edge with an endpoint in $H$ & Theorem~\ref{thm:dead} \\
+$a$, $b$, $c$ & vertices of the examples & Example~\ref{ex:c4} \\
+$w$, $w_e$, $w_x$ & a weight vector, its value at the edge $e$, and the total weight of the edges at $x$ & Section~\ref{sec:intro} \\
+$p_e(w)$ & the probability that the $w$-weighted walk from $N$ crosses $e$ before it hits $F$ & Section~\ref{sec:intro} \\
+$\EE$, $\cF_n$ & expectation, and the $\sigma$-field generated by the first $n$ ants & Section~\ref{sec:intro} \\
+equilibrium & a solution of $p(w)=w$ & Section~\ref{sec:intro} \\
+$\Gamma(F)$ & the set of neighbours of $F$ & Theorem~\ref{thm:shadow} \\
+$I_0$ & the connected component of $N$ in $G-F-\Gamma(F)$ ($I_0=\emptyset$ in Section~\ref{sec:census} when $N$ is adjacent to $F$) & Theorem~\ref{thm:shadow} \\
+$a$ & the edge $\{u,F\}$, in the proof of Theorem~\ref{thm:dead} & Section~\ref{sec:proof} \\
+$X_n$, $A_n$ & the weights $W_e(n)$ and $W_a(n)$ & Section~\ref{sec:proof} \\
+$R$ & the total weight of the edges at $u$ other than $a$ and $e$ & Section~\ref{sec:proof} \\
+$h$ & the probability that the walk from $N$ visits $u$ before $F$ & Section~\ref{sec:proof} \\
+$\rho$, $\rho'$ & the probabilities that the walk returns to $u$ after the step $u\to y$, and after a step along another edge & Section~\ref{sec:proof} \\
+$S$ & $A+R(1-\rho')$ & Section~\ref{sec:proof} \\
+$\deg(x)$ & the degree of the vertex $x$ & Section~\ref{sec:proof} \\
+$c$ & the constant $1/(\deg(u)\deg(y))$ & Section~\ref{sec:proof} \\
+$\Lambda_n$ & $\log(X_n/A_n)$ & Section~\ref{sec:proof} \\
+$D_n$, $D'_n$ & the indicators that the $(n+1)$-st ant crosses $e$ and $a$ & Section~\ref{sec:proof} \\
+$t$ & a real number in $\log(1+t)$ & Section~\ref{sec:proof} \\
+$t$ & a value of $v$ greater than $1$, in the proof & Proposition~\ref{prop:volt} \\
+$t$ & the time of the flow $\dot w=p(w)-w$ & Section~\ref{sec:eq} \\
+$M_n$, $Q$ & the martingale part of $\Lambda_n$, and the sum of the second-order terms & Section~\ref{sec:proof} \\
+$\delta$, $m$ & a positive number, and a time with $X_m\ge\delta m$ & Section~\ref{sec:proof} \\
+$g(x)$ & the expected number of visits to $x$ by the $w$-walk from $N$ before it hits $F$ & Section~\ref{sec:eq} \\
+$v(x)$ & the voltage $g(x)/w_x$ of the unit current from $N$ to $F$, with $v(F)=0$ & Section~\ref{sec:eq} \\
+$V_1$ & the set of neighbours $x$ of $F$ with $w_{xF}>0$ & Proposition~\ref{prop:volt} \\
+$C$ & the set of vertices joined to $z$ by a path of the support along which $v\ge t$, in the proof & Proposition~\ref{prop:volt} \\
+$\varepsilon$ & a small weight put on one edge & Section~\ref{sec:eq} \\
+$\mathcal A$ & the set of neighbours of $F$ with a neighbour in $I_0$ ($\mathcal A=\{N\}$ when $N$ is adjacent to $F$) & Section~\ref{sec:census} \\
+shadow & the vertex set $V\setminus(I_0\cup\{F\})$ & Section~\ref{sec:census} \\
+$\mathcal D(G,N,F)$ & the set of edges of kinds (D1) and (D2) & Section~\ref{sec:census} \\
+$Dp$, $I$ & the derivative of $p$, and the identity & Section~\ref{sec:census} \\
+$\Theta(L_1,\dots,L_k)$ & the graph made of $k\ge2$ internally disjoint paths from $N$ to $F$, the $i$-th with $L_i$ edges & Section~\ref{sec:theta} \\
+$\alpha_i$ & the ratio of the weights of consecutive edges of the $i$-th path & Section~\ref{sec:theta} \\
+$a_{i,j}$, $c_i$, $C$ & the rate of excursions from $N$ that reach depth $j$ of path $i$, the rate of those that reach $F$ along path $i$, and $\sum_ic_i$, in the proof & Proposition~\ref{prop:theta} \\
+$p_{i,j}$ & $p_e(w)$ for the $j$-th edge from $N$ of path $i$ & Proposition~\ref{prop:theta} \\
+\bottomrule
+\end{longtable}
+
 \begin{thebibliography}{99}
 \bibitem{Aletti} G.~Aletti, A.~Collevecchio, I.~Crimaldi, M.~Deijfen, S.~Dereich, A.~Ghiglietti, R.~van der Hofstad,
 M.~Holmes, D.~Kious, V.~Kleptsyn, B.~Lodewijks, P.~M\"orters and B.~Schapira, Open problems in stochastic
@@ -430,7 +493,10 @@ formation, \emph{Electron. J. Probab.} \textbf{23} (2018), Paper No.~39, 1--38.
 arXiv:2601.22855.
 \bibitem{NetworkX} A.~A.~Hagberg, D.~A.~Schult and P.~J.~Swart, Exploring network structure, dynamics, and function
 using NetworkX, in \emph{Proceedings of the 7th Python in Science Conference (SciPy 2008)}, 2008, 11--15.
-\bibitem{NumPy} C.~R.~Harris, K.~J.~Millman, S.~J.~van der Walt et al., Array programming with NumPy,
+\bibitem{NumPy} C.~R.~Harris, K.~J.~Millman, S.~J.~van der Walt, R.~Gommers, P.~Virtanen, D.~Cournapeau,
+E.~Wieser, J.~Taylor, S.~Berg, N.~J.~Smith, R.~Kern, M.~Picus, S.~Hoyer, M.~H.~van Kerkwijk, M.~Brett,
+A.~Haldane, J.~Fern\'andez del R\'io, M.~Wiebe, P.~Peterson, P.~G\'erard-Marchant, K.~Sheppard, T.~Reddy,
+W.~Weckesser, H.~Abbasi, C.~Gohlke and T.~E.~Oliphant, Array programming with NumPy,
 \emph{Nature} \textbf{585} (2020), 357--362.
 \bibitem{Atlas} R.~C.~Read and R.~J.~Wilson, \emph{An Atlas of Graphs}, Oxford University Press, 1998.
 \bibitem{ShmaloLE} Y.~Shmalo, \emph{A non-geodesic edge that survives in the loop-erased ant process}, 2026,

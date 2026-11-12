@@ -23,16 +23,15 @@
 \begin{abstract}
 In the trace-reinforced ant process of Kious, Mailler and Schapira, ants walk one after another from a nest $N$ to a
 food source $F$ on a finite graph, and each ant adds one unit of weight to every edge it has crossed. It was conjectured
-that the normalised weights converge to a deterministic limit, and that this limit is positive on every edge as soon as
-$N$ and $F$ are at distance at least two. We show that the second statement fails. If a part of the graph hangs by a
-single edge from a neighbour of $F$, on the side away from $N$, then the normalised weights of all its edges tend to
-zero almost surely; this happens in $2$-connected graphs with $N$ and $F$ at distance two. We also show that the
-mean-field vector field has no equilibrium with all coordinates positive when some neighbour of $F$ is hidden from $N$
-by the other neighbours of $F$, so that on such graphs, some of which are $3$-connected, the normalised weights cannot
-converge to a positive limit. The equilibria are described through the voltage of the unit current from $N$ to $F$.
-A census of the $22{,}828$ cases on connected graphs with at most seven vertices supports a corrected form of the
-conjecture, in which the set of edges with limit zero is given by an explicit combinatorial rule. We also give the
-equilibrium on a graph made of any number of parallel paths.
+that the normalised weights converge to a deterministic limit which is positive on every edge once $N$ and $F$ are at
+distance at least two. We show that the positivity fails. If a part of the graph hangs by a single edge from a
+neighbour of $F$, on the side away from $N$, then the normalised weights of all its edges tend to zero almost surely;
+this happens in $2$-connected graphs with $N$ and $F$ at distance two. When some neighbour of $F$ is hidden from $N$ by
+the other neighbours of $F$, the mean-field vector field has no equilibrium with all coordinates positive, so on such
+graphs, some of them $3$-connected, the normalised weights cannot converge to a positive limit. The equilibria are
+described through the voltage of the unit current from $N$ to $F$ and are computed on any number of parallel paths. A
+census of the $22{,}828$ cases on connected graphs with at most seven vertices supports a corrected conjecture, in
+which an explicit combinatorial rule gives the edges with limit zero.
 \end{abstract}
 \maketitle
 
@@ -48,9 +47,10 @@ W_e(n+1)=W_e(n)+\one\{\text{the $(n+1)$-st ant crossed $e$}\}.
 \]
 The process was introduced by Kious, Mailler and Schapira \cite{KMS}, as a variant of the models of \cite{KMS0}, in
 which an ant reinforces only a part of its trace (its loop-erasure, or a shortest path inside it). These models
-are motivated by the trails with which ants mark the way to a food source \cite{Den,DS}, and belong to the family of
-reinforced random processes surveyed in \cite{Pem07}, which goes back to the edge-reinforced walk \cite{Dav}; a model
-with two nests is treated in \cite{MV}. Reinforced walks which form a path are studied in \cite{LGR,EFR}, and
+are motivated by the trails with which ants mark the way to a food source, observed in the Argentine ant~\cite{Den}
+and turned into an optimisation heuristic~\cite{DS}. They belong to the reinforced random processes surveyed by
+Pemantle~\cite{Pem07}, a family that goes back to the edge-reinforced walk of Davis~\cite{Dav}. Mailler and Varin
+treat a model with two nests~\cite{MV}. Reinforced walks which form a path are studied in \cite{LGR,EFR}, and
 P\'olya urns placed on the vertices of a graph and competing along its edges in \cite{HHKR}. Kious, Mailler
 and Schapira proved that $W(n)/n$ converges almost surely to an explicit
 deterministic limit on several families of graphs (tree-like graphs in which $N$ and $F$ are adjacent, the cone, two

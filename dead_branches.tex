@@ -63,15 +63,17 @@ Furthermore, if in addition the distance between $N$ and $F$ is at least $2$, th
 \end{conjecture}
 
 The first sentence of the conjecture is restated in the list of open problems~\cite[Section~2]{Aletti}. For the
-loop-erased rule of~\cite{KMS0} and for the forward-loop-erased rule of Armfield and Mailler~\cite{AM}, in which an
-ant reinforces the loop-erasure of its trajectory, the question is instead whether the edges which lie on no geodesic
-have normalised weight tending to zero. This is proved in~\cite{KMS0} for series-parallel graphs and in~\cite{AM}
-when $N$ and $F$ are at distance two, and it fails on a graph in which $N$ and $F$ are at distance
-three~\cite{ShmaloLE}.
+loop-erased rule of~\cite{KMS0}, in which an ant reinforces the loop-erasure of its time-reversed trajectory, and
+for the forward-loop-erased rule of Armfield and Mailler~\cite{AM}, in which it reinforces the loop-erasure of its
+trajectory itself, the question is instead whether the edges which lie on no geodesic have normalised weight tending
+to zero. This is proved in~\cite{KMS0} for the first rule on series-parallel graphs and in~\cite{AM} for the second
+rule when $N$ and $F$ are at distance at most two, and it fails for both rules on a graph in which $N$ and $F$ are at
+distance three~\cite{ShmaloLE}.
 
-An edge with an endpoint outside the connected component of $N$ in $G-F$ is never crossed, so the second sentence is
-to be read for graphs in which $G-F$ is connected; we call such triples $(G,N,F)$ \emph{reduced}. The second sentence
-fails for reduced graphs.
+Let $R$ be the connected component of $N$ in $G-F$. An edge with an endpoint outside $R\cup\{F\}$ is never crossed,
+and removing all such edges does not change the process; on a graph that has such edges the second sentence fails for
+this trivial reason. We call $(G,N,F)$ \emph{reduced} if $G-F$ is connected. The second sentence fails also for
+reduced graphs.
 
 \begin{theorem}[Dead branches]\label{thm:dead}
 Let $u$ be a neighbour of $F$, and let $H\subset V\setminus\{N,F,u\}$ be a set of vertices such that exactly one edge
@@ -206,8 +208,10 @@ small weights on the triangle. In the mean-field flow such a triangle keeps posi
 \section{Equilibria and voltages}\label{sec:eq}
 
 Let $w\in[0,\infty)^E$ have a support that connects $N$ to $F$, and let $g(x)$ be the expected number of visits to
-$x$ by the $w$-walk from $N$ before it hits $F$. For a vertex $x\ne F$ with $w_x>0$ put $v(x)=g(x)/w_x$, and put
-$v(F)=0$. Then $v$ is the voltage of the unit current from $N$ to $F$ in the network $w$:
+$x$ by the $w$-walk from $N$ before it hits $F$. For a vertex $x\ne F$ put $v(x)=g(x)/w_x$ if $w_x>0$ and $v(x)=0$ if
+$w_x=0$, and put $v(F)=0$. We call $x\ne F$ \emph{visited} if $g(x)>0$, that is, if $x$ is joined to $N$ by a path of
+the support that avoids $F$; at every other vertex $v=0$. On the visited vertices $v$ is the voltage of the unit
+current from $N$ to $F$ in the network $w$, grounded at $F$, and
 \begin{equation}\label{eq:kirchhoff}
 \sum_{z\sim x}w_{xz}\,(v(x)-v(z))=\one\{x=N\}\qquad(x\ne F,\ w_x>0).
 \end{equation}
@@ -227,15 +231,17 @@ Let $w$ be an equilibrium and let $V_1$ be the set of neighbours $x$ of $F$ with
 \item[(b)] $v(x)\ge1$ for every vertex $x\ne F$ visited by the walk;
 \item[(c)] if $N\notin V_1$, every $x\in V_1$ has a neighbour $z$ with $w_{xz}>0$ and $v(z)>1$, and every vertex
 with $v>1$ is joined to $N$ by a path of the support along which $v>1$;
-\item[(d)] if $N\in V_1$, then $w_{NF}=1$, $v\equiv1$ on the visited vertices, and $w_{xF}=0$ for every other
+\item[(d)] if $N\in V_1$, then $w_{NF}=1$, $v\equiv1$ on the visited vertices other than $F$, and $w_{xF}=0$ for every other
 neighbour $x$ of $F$.
 \end{itemize}
 \end{proposition}
 \begin{proof}
 (a) By Lemma~\ref{lem:cross}, $w_{xF}=p_{xF}(w)=w_{xF}v(x)$.
 (b) By \eqref{eq:kirchhoff}, at a visited vertex outside $V_1\cup\{F\}$ the value $v(x)$ is at least the weighted mean
-of $v$ over its neighbours in the support, none of which is $F$. If the minimum of $v$ over the visited vertices other
-than $F$ were attained outside $V_1$, it would be attained at all support neighbours, and, the support component of
+of $v$ over its neighbours in the support, none of which is $F$. The left side of \eqref{eq:kirchhoff} is positive at
+$N$, so if $N\notin V_1$ then $v(N)$ is larger than that mean and $N$ is not a point of minimum. If the minimum of $v$
+over the visited vertices were attained outside $V_1$, it would therefore be attained at all support neighbours of
+such a point, and, the support component of
 $N$ being connected and containing a vertex of $V_1$, also on $V_1$, where $v=1$.
 (c) For $x\in V_1$, $x\neq N$, \eqref{eq:kirchhoff} and (a) give $\sum_{z\ne F}w_{xz}(v(z)-1)=w_{xF}>0$, so some
 neighbour $z$ in the support has $v(z)>1$. Now let $v(z)=t>1$ and let $C$ be the set of vertices joined to $z$ by a
@@ -244,7 +250,7 @@ path of the support along which $v\ge t$. Suppose $N\notin C$. By (a), $C$ does 
 support. A neighbour outside $C$ has $v<t$. Hence a vertex where $v$ is maximal on $C$ has all its support neighbours
 in $C$, and $v$ is maximal at each of them. Repeating, $C$ is a union of connected components of the support. But $z$
 is visited, so its component contains $N$, a contradiction.
-(d) If $N\in V_1$ then $v(N)=1$, and $v(N)$ is the maximum of $v$, so $v\equiv1$ on the visited vertices by (b).
+(d) If $N\in V_1$ then $v(N)=1$, and $v(N)$ is the maximum of $v$, so $v\equiv1$ on the visited vertices other than $F$ by (b).
 Then \eqref{eq:kirchhoff} at $N$ reads $w_{NF}=1$, and at another $x\in V_1$ it would read $w_{xF}=0$.
 \end{proof}
 
@@ -259,13 +265,16 @@ $\chi_e>0$, homogeneity and the continuity of $p$ on $(0,\infty)^E$ give $p_e(W(
 $p(\chi)=\chi$, which has just been excluded.
 \end{proof}
 
-Lemma~\ref{lem:cross} also explains which zero edges can be stable. Let $w$ be an equilibrium and $e=\{x,z\}$ an
-edge with $w_e=0$. If a small weight $\varepsilon$ is put on $e$ alone, then $p_e=\varepsilon\,(v(x)+v(z))+o(\varepsilon)$
-when both endpoints are visited, and $p_e=\varepsilon\,v(x)+o(\varepsilon)$ when only $x$ is. By
-Proposition~\ref{prop:volt}(b) the first rate is at least $2$ unless $z=F$, so such an edge is repelled from zero. An
-edge to an unvisited vertex, or to $F$, is not repelled only when $v(x)=1$, and then the rate equals $1$ exactly:
-linear analysis is silent, the decay is of order $1/t$, and whether the edge dies is decided at second order, as in
-Theorem~\ref{thm:dead}.
+Lemma~\ref{lem:cross} also gives the first-order rate of a single zero edge. Let $w$ be an equilibrium and
+$e=\{x,z\}$ an edge with $w_e=0$, and put a small weight $\varepsilon$ on $e$ alone. Then
+$p_e=\varepsilon\,(v(x)+v(z))+o(\varepsilon)$ when both endpoints are visited, and $p_e=\varepsilon\,v(x)+o(\varepsilon)$
+when $x$ is visited and $z$ is $F$ or an unvisited vertex. By Proposition~\ref{prop:volt}(b) the first rate is at
+least $2$, and the second is at least $1$, with equality exactly when $v(x)=1$; at rate $1$ the linear term does not
+decide the scalar equation $\dot\varepsilon=p_e-\varepsilon$. When neither endpoint is visited the edge is not reached
+before $F$, its rate is $0$, and its weight decays exponentially. These rates concern one edge at a time. At an
+equilibrium with unvisited vertices $p$ need not be jointly differentiable in the zero coordinates, and weight put on
+several zero edges at once can change the drift, so the single-edge rates do not decide the stability of such an
+equilibrium.
 
 \section{A corrected conjecture and a census of small graphs}\label{sec:census}
 
@@ -285,8 +294,9 @@ only if $e\in\mathcal D(G,N,F)$.
 
 Theorem~\ref{thm:dead} proves $\chi_e=0$ for the edges of kind (D2) with $u\in \Gamma(F)$. When $N$ is adjacent to $F$,
 the edges of kind (D1) are covered by \cite[Proposition 2.8]{KMS}, and Proposition~\ref{prop:volt}(d) is the
-corresponding statement for equilibria. When $N$ is not adjacent to $F$, Theorem~\ref{thm:shadow} shows that
-$\mathcal D\neq\emptyset$ is forced as soon as (D1) is non-empty.
+corresponding statement for equilibria. When $N$ is not adjacent to $F$ and (D1) is non-empty,
+Theorem~\ref{thm:shadow} shows that every limit of $W(n)/n$ has a zero coordinate; it does not show that the zero
+coordinates are those of (D1) or of $\mathcal D$.
 
 We tested the mean-field form of Conjecture~\ref{conj:new} on every connected graph with $3$ to $7$ vertices and
 every ordered pair $(N,F)$ up to automorphism, $22{,}828$ cases in all, of which $20{,}092$ are reduced; in the others the
@@ -305,18 +315,21 @@ distance at least $2$ & 10{,}824 & 10{,}824 & 10{,}824 & 9{,}806 & 4{,}118\\
 \bottomrule
 \end{tabular}
 \end{center}
-The six runs reached the same point in every case but one. In the remaining case, a graph with seven vertices in which
-$N$ is adjacent to $F$, an edge of $\mathcal D$ has a weight that decays like $1/t$ along the flow, and in one run it had
-not been set to zero by the end of the integration; with ten times the integration time the six runs agree and the
-zero set is $\mathcal D$. At the limits the largest real part of an eigenvalue of
-$Dp-I$ restricted to the support is $-0.015$, and the smallest positive coordinate is $0.0019$. Among the $9{,}806$
+The table counts the runs at the original integration time. The six runs reached the same point in every case but
+one, case $3769$ of the census, a graph with seven vertices in which $N$ is adjacent to $F$. There an edge of
+$\mathcal D$ has a weight that decays slowly along the flow, and in one run it had not been set to zero by the end of
+the integration; in a rerun with ten times the integration time (the script \texttt{code/rerun\_3769.py} of the
+repository of this paper) the six runs agree and the zero set is $\mathcal D$. At the limits the largest real part of
+an eigenvalue of $Dp-I$ restricted to the support is $-0.015$, and the smallest positive coordinate is $0.0019$. These
+quantities concern the flow on the support. They do not certify stability in the directions of the zero coordinates,
+so the column ``zero set $=\mathcal D$'' records what the integration found and is not a proof. Among the $9{,}806$
 reduced cases at distance at least $2$, Theorem~\ref{thm:dead} applies to $2{,}504$ and Theorem~\ref{thm:shadow} to
 $3{,}294$; $1{,}643$ of the $4{,}118$ cases with a dead edge are $2$-connected graphs, and $247$ are $3$-connected.
 
 The process itself was simulated with $10^7$ ants on four graphs. On the graph of Example~\ref{ex:c4} the values of
 $W_{ay}(n)/n$ at $n=10^3,10^4,\dots,10^7$ were $0.060$, $0.059$, $0.049$, $0.044$, $0.040$, and those of
 $W_{yF}(n)/n$ were $0.020$, $0.016$, $0.010$, $0.007$, $0.005$, while the four edges of the cycle were within $0.02$
-of their limits $2^{-1/2}$ and $1/2$ at $n=10^7$. On the two graphs described after Theorem~\ref{thm:shadow} the
+of the corresponding boundary-equilibrium values $2^{-1/2}$ and $1/2$ at $n=10^7$. On the two graphs described after Theorem~\ref{thm:shadow} the
 weight of the edge at $F$ that dies in the flow went from $0.123$ to $0.067$ and from $0.098$ to $0.044$ over the same
 range. The decay is slow. In Step~2 of the proof of Theorem~\ref{thm:dead} the logarithm of $X_n/A_n$ decreases in
 conditional mean by an amount of order $p_e/n$ per ant, and $p_e$ is itself of order $X_n/n$; this points to a rate of
